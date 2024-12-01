@@ -140,9 +140,9 @@ INSERT INTO Category (CategoryName) VALUES
 ;
 
 INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, ProductPrice, StockQuantity, ProductImage, ReleaseDate) VALUES
-(3, 1, 'Laptop', 'General use laptop with high performance', 699.99, 50, 'laptop.jpg', '2023-01-01'),
-(3, 2, 'Dictionary', 'A regular dictionary', 19.99, 100, 'dictionary.jpg', '2022-11-15'),
-(3, 3, 'T-shirt', 'A simple t-shirt', 14.99, 200, 'tshirt.jpg', '2022-08-20')
+(3, 1, 'Laptop', 'General use laptop with high performance', 699.99, 50, '/images/laptop.jpg', '2023-01-01'),
+(3, 2, 'Dictionary', 'A regular dictionary', 19.99, 100, '/images/dictionary.jpg', '2022-11-15'),
+(3, 3, 'T-shirt', 'A simple t-shirt', 14.99, 200, '/images/tshirt.jpg', '2022-08-20')
 ;
 
 INSERT INTO Inventory (SellerID, ProductID, Quantity) VALUES
