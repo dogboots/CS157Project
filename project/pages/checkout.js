@@ -7,9 +7,9 @@ export default function CheckoutPage() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [loading, setLoading] = useState(false); // To track if the order is being placed
   const [isClient, setIsClient] = useState(false); // State to track if we're on the client-side
+  const [paymentMethod, setPaymentMethod] = useState(''); // State to track selected payment method
 
   useEffect(() => {
-    // Set isClient to true after the component mounts (only on client-side)
     setIsClient(true);
 
     const cart = sessionStorage.getItem('cart');
@@ -26,10 +26,14 @@ export default function CheckoutPage() {
   };
 
   const handlePlaceOrder = async () => {
+    if (!paymentMethod) {
+      alert('Please select a payment method.');
+      return;
+    }
+
     setLoading(true); // Start loading state when placing the order
     const totalAmount = calculateTotalPrice();
-    
-    // Get the logged-in user ID from sessionStorage
+
     const loggedInUserID = sessionStorage.getItem("buyerID");
 
     if (!loggedInUserID) {
@@ -44,20 +48,33 @@ export default function CheckoutPage() {
       items: selectedItems.map(item => ({
         ProductID: item.ProductID,
         Quantity: item.selectedQuantity,
-        UnitPrice: item.ProductPrice // Ensure the price is passed as `UnitPrice`
+        UnitPrice: item.ProductPrice
       })),
+      paymentMethod: paymentMethod // Include the selected payment method
     };
 
     try {
+      // First, place the order (save to database)
       const response = await fetch('/api/place-order', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData),
       });
 
       if (response.ok) {
+        // Then, update the stock after the order is placed
+        const stockUpdateResponse = await fetch('/api/update-stock', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: orderData.items }),
+        });
+
+        if (!stockUpdateResponse.ok) {
+          alert('Failed to update stock. Please try again.');
+          setLoading(false);
+          return;
+        }
+
         setOrderPlaced(true);
         sessionStorage.removeItem('cart'); // Clear the cart after placing the order
       } else {
@@ -69,8 +86,8 @@ export default function CheckoutPage() {
     } finally {
       setLoading(false); // Stop loading state once the request is done
     }
-};
-  // Return a fallback message until the component mounts on the client-side
+  };
+
   if (!isClient) {
     return null; // Prevent rendering during SSR
   }
@@ -83,7 +100,6 @@ export default function CheckoutPage() {
       ) : (
         selectedItems.map((item) => (
           <div key={item.ProductID} className="border p-4 mb-4 rounded shadow">
-            {/* Adjust the image size here */}
             <img src={item.ProductImage} alt={item.ProductName} className="w-32 h-32 object-cover mb-4" />
             <p>{item.ProductName}</p>
             <p>Quantity: {item.selectedQuantity}</p>
@@ -92,6 +108,19 @@ export default function CheckoutPage() {
         ))
       )}
       <div className="font-semibold text-lg">Total: ${calculateTotalPrice()}</div>
+
+      <div className="mt-4">
+        <label className="block text-lg font-medium">Payment Method</label>
+        <select
+          value={paymentMethod}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+          className="mt-2 p-2 border rounded w-full"
+        >
+          <option value="">Select Payment Method</option>
+          <option value="CreditCard">Credit Card</option>
+          <option value="PayPal">PayPal</option>
+        </select>
+      </div>
 
       <button
         onClick={handlePlaceOrder}

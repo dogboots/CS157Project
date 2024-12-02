@@ -33,13 +33,15 @@ export default function CategoryPage() {
     }
   }, [category]);
 
-  const handleIncrease = (productId) => {
+  const handleIncrease = (productId, stockQuantity) => {
     const productIndex = selectedItems.findIndex(item => item.ProductID === productId);
 
     if (productIndex !== -1) {
       const updatedItems = [...selectedItems];
-      updatedItems[productIndex].selectedQuantity += 1;
-      setSelectedItems(updatedItems);
+      if (updatedItems[productIndex].selectedQuantity < stockQuantity) {
+        updatedItems[productIndex].selectedQuantity += 1;
+        setSelectedItems(updatedItems);
+      }
     } else {
       const product = products.find(product => product.ProductID === productId);
       if (product) {
@@ -106,6 +108,7 @@ export default function CategoryPage() {
                 <div className="p-4">
                   <p className="text-lg font-semibold text-gray-800">{product.ProductName}</p>
                   <p className="text-gray-600 text-sm">Price: ${product.ProductPrice}</p>
+                  <p className="text-gray-600 text-sm">Stock: {product.StockQuantity} available</p>
 
                   {/* Quantity controls */}
                   <div className="flex items-center mt-4">
@@ -120,7 +123,8 @@ export default function CategoryPage() {
                     </span>
                     <button
                       className="bg-gray-300 text-gray-700 rounded-full px-4 py-2"
-                      onClick={() => handleIncrease(product.ProductID)}
+                      onClick={() => handleIncrease(product.ProductID, product.StockQuantity)}
+                      disabled={selectedItems.find(item => item.ProductID === product.ProductID)?.selectedQuantity >= product.StockQuantity}
                     >
                       +
                     </button>
