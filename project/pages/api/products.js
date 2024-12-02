@@ -5,11 +5,15 @@ export default async function handler(req, res) {
 
     const query = `
       SELECT 
-        ProductID, 
-        ProductName, 
-        ProductImage
+    ProductID, 
+    ProductName, 
+    ProductImage,
+    ProductDescription, 
+    ProductPrice, 
+    StockQuantity, 
+    ReleaseDate
       FROM 
-        Product;
+    Product;
     `;
     
     db.query(query, (err, results) => {

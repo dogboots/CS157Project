@@ -2,46 +2,68 @@
 
 import Link from 'next/link'
 import { FiMenu } from "react-icons/fi";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import "../globals.css";
 
-function NavBar() {
-    const [isOpen, setOpen] = useState(false);
+function NavBar({ isOpen, closeSideBar, openSideBar }) {
+  const [buyerID, setBuyerID] = useState(null);
 
-    const openSideBar = () => {
-        setOpen(!isOpen);
-        console.log(isOpen);
-    };
+  // Check sessionStorage for the buyerID when the component mounts
+  useEffect(() => {
+    const storedBuyerID = sessionStorage.getItem('buyerID');
+    if (storedBuyerID) {
+      setBuyerID(storedBuyerID);
+    }
+  }, []);
 
-    const closeSideBar = () => {
-        setOpen(false);
-    };
+  const handleLogout = () => {
+    sessionStorage.removeItem('buyerID');
+    setBuyerID(null);
+  };
 
-    return ( 
-        <div>
-            
-        <nav className="bg-green-500 p-1">
-            <div className="flex text-white text-2xl">
-                 
-                <div className="flex-1">
-                    <b>Placeholder</b>
-                  
-                </div>
+  return (
+    <div>
+      <nav className="bg-green-500 p-1">
+        <div className="flex justify-between items-center text-white text-2xl">
+          <div className="flex items-center">
+            <Link href="/">
+              <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                <b>Placeholder</b>
+              </button>
+            </Link>
 
-                <button><FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar}/>
-                    
+            <div className="flex space-x-6 ml-6">
+
+              {/* Show Login or Logout button */}
+              {!buyerID ? (
+                <Link href="/login">
+                  <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                    Login
                   </button>
-                   
-        
-                
-            
+                </Link>
+              ) : (
+                <>
+                  <span className="text-white">User ID: {buyerID}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
             </div>
-        </nav>
-        <Sidebar isOpen={isOpen} closeSideBar={closeSideBar}/>
+          </div>
+
+          <button>
+            <FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
+          </button>
         </div>
-        
-    );
+      </nav>
+      <Sidebar isOpen={isOpen} closeSideBar={closeSideBar} />
+    </div>
+  );
 }
 
 export default NavBar;

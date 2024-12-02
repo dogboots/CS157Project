@@ -2,7 +2,7 @@ import db from '../../../lib/db';  // Import the connection pool
 
 export default async function handler(req, res) {
   const { category } = req.query;
-  console.log('Requested category:', category);
+ 
 
   try {
     // Query to fetch the CategoryID based on the category name
@@ -26,7 +26,10 @@ export default async function handler(req, res) {
 
       // Query to fetch products in the selected category
       const productQuery = `
-        SELECT ProductID, ProductName, ProductImage
+        SELECT ProductID, ProductName, ProductImage, ProductDescription, 
+        ProductPrice, 
+       StockQuantity, 
+        ReleaseDate
         FROM Product
         WHERE CategoryID = ?
       `;
