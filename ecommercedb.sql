@@ -148,12 +148,6 @@ INSERT INTO `Order` (BuyerID, TotalPrice, PurchaseDate) VALUES
 (1, 49.97, '2023-03-15')
 ;
 
-INSERT INTO OrderedItem (OrderID, ProductID, Quantity, UnitPrice) VALUES
-(1, 1, 1, 699.99),
-(1, 2, 2, 19.99),
-(2, 3, 3, 14.99)
-;
-
 INSERT INTO Payment (OrderID, PaymentMethod, PaymentStatus, PaymentDate) VALUES
 (1, 'CreditCard', 'Completed', '2023-03-10'),
 (2, 'PayPal', 'Completed', '2023-03-15')
