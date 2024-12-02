@@ -13,7 +13,7 @@ CREATE TABLE Address (
 -- Users Table (Entity 2)
 CREATE TABLE User (
 	UserID INTEGER AUTO_INCREMENT PRIMARY KEY,
-	isActive BOOLEAN NOT NULL DEFAULT TRUE,
+    isActive BOOLEAN NOT NULL DEFAULT TRUE,
     Username VARCHAR(50) UNIQUE NOT NULL,
     Password VARCHAR(225) NOT NULL,
     Email VARCHAR(225) UNIQUE NOT NULL,
@@ -83,21 +83,7 @@ CREATE TABLE OrderedItem (
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
 );
 
--- Sale Table (Entity 9)
-CREATE TABLE Sale (
-    SaleID INTEGER AUTO_INCREMENT PRIMARY KEY,
-    SellerID INTEGER NOT NULL,
-    OrderItemID INTEGER NOT NULL,
-    ProductID INTEGER NOT NULL,
-    Quantity INTEGER NOT NULL,
-    SalePrice DECIMAL(10, 2),
-    SaleDate DATE,
-    FOREIGN KEY (SellerID) REFERENCES User(UserID),
-    FOREIGN KEY (OrderItemID) REFERENCES OrderedItem(OrderItemID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
-);
-
--- Payment Table (Entity 10)
+-- Payment Table (Entity 9)
 CREATE TABLE Payment (
     PaymentID INTEGER AUTO_INCREMENT PRIMARY KEY,
     OrderID INTEGER NOT NULL,
@@ -107,7 +93,7 @@ CREATE TABLE Payment (
     FOREIGN KEY (OrderID) REFERENCES `Order`(OrderID)
 );
 
--- Review Table (Entity 11)
+-- Review Table (Entity 10)
 CREATE TABLE Review (
     ReviewID INTEGER AUTO_INCREMENT PRIMARY KEY,
     ProductID INTEGER NOT NULL,
@@ -166,12 +152,6 @@ INSERT INTO OrderedItem (OrderID, ProductID, Quantity, UnitPrice) VALUES
 (1, 1, 1, 699.99),
 (1, 2, 2, 19.99),
 (2, 3, 3, 14.99)
-;
-
-INSERT INTO Sale (SellerID, OrderItemID, ProductID, Quantity, SalePrice, SaleDate) VALUES
-(3, 1, 1, 1, 699.99, '2023-03-10'),
-(3, 2, 2, 2, 39.98, '2023-03-10'),
-(3, 3, 3, 3, 49.97, '2023-03-15')
 ;
 
 INSERT INTO Payment (OrderID, PaymentMethod, PaymentStatus, PaymentDate) VALUES
