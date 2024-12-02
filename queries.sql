@@ -108,23 +108,6 @@ FROM `Order` o
 JOIN User u ON u.UserID = o.BuyerID
 WHERE u.UserID = 1;
 
--- Get user sale history
-SELECT 
-    s.SaleID,
-    s.SaleDate,
-    s.SalePrice,
-    oi.Quantity,
-    p.ProductName,
-    u.Username AS SellerUsername,
-    u.Email AS SellerEmail
-FROM Sale s
-JOIN OrderedItem oi ON s.OrderItemID = oi.OrderItemID
-JOIN Product p ON oi.ProductID = p.ProductID
-JOIN User u ON s.SellerID = u.UserID
-WHERE u.UserID = ?   
-ORDER BY s.SaleDate DESC
-;
-
 -- Review Management Queries 
 
 -- Add review record:
