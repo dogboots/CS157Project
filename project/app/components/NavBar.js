@@ -1,25 +1,26 @@
-"use client"
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
-import { useState, useEffect } from 'react';
-import Sidebar from './Sidebar';
+import { useState, useEffect } from "react";
+import Sidebar from "./Sidebar";
 import "../globals.css";
 
 function NavBar({ isOpen, closeSideBar, openSideBar }) {
   const [buyerID, setBuyerID] = useState(null);
 
-  // Check sessionStorage for the buyerID when the component mounts
   useEffect(() => {
-    const storedBuyerID = sessionStorage.getItem('buyerID');
+    const storedBuyerID = sessionStorage.getItem("buyerID");
+    console.log("Loaded buyerID from sessionStorage:", storedBuyerID); // Debugging line
     if (storedBuyerID) {
       setBuyerID(storedBuyerID);
     }
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.removeItem('buyerID');
+    sessionStorage.removeItem("buyerID");
     setBuyerID(null);
+    console.log(buyerID)
   };
 
   return (
@@ -29,13 +30,10 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
           <div className="flex items-center">
             <Link href="/">
               <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-                <b>Placeholder</b>
+                <b>Ecommerce</b>
               </button>
             </Link>
-
             <div className="flex space-x-6 ml-6">
-
-              {/* Show Login or Logout button */}
               {!buyerID ? (
                 <Link href="/login">
                   <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
@@ -55,7 +53,6 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
               )}
             </div>
           </div>
-
           <button>
             <FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
           </button>
