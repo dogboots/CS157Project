@@ -18,29 +18,37 @@ function NavBar() {
         setOpen(false);
     };
 
-    return ( 
+    return (
         <div>
-            
-        <nav className="bg-green-500 p-1">
-            <div className="flex text-white text-2xl">
-                 
-                <div className="flex-1">
-                    <b>Placeholder</b>
-                  
-                </div>
 
-                <button><FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar}/>
-                    
-                  </button>
-                   
-        
-                
-            
-            </div>
-        </nav>
-        <Sidebar isOpen={isOpen} closeSideBar={closeSideBar}/>
+            <nav className="bg-green-500 p-1">
+                <div className="flex justify-between items-center text-white text-2xl">
+
+                    <div className="flex items-center">
+                        <Link href="/">
+                            <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                                <b>Placeholder</b>
+                            </button>
+                        </Link>
+
+
+                        <div className="flex space-x-6 ml-6">
+                            <Link href="/user">
+                                <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                                    User
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <button>
+                        <FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
+                    </button>
+                </div>
+            </nav>
+            <Sidebar isOpen={isOpen} closeSideBar={closeSideBar} />
         </div>
-        
+
     );
 }
 
