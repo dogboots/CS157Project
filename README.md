@@ -9,7 +9,7 @@ https://www.npmjs.com/
 npm install (installs dependencies)
 npm run dev (runs development server)
 
-4. Create a .env.local file to connect to database:
+4. Create a .env.local file in the project folder to connect to database:
 DB_HOST=(usually localhost)
 DB_USER=(usually root)
 DB_PASSWORD=(db password)
