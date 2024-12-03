@@ -7,7 +7,7 @@ https://www.npmjs.com/
 3. Navigate to the directory where project is stored in cmd prompt and do the following commands:
 
 npm install (installs dependencies)
-npm run dev (runs development server)
+npm run dev (runs development server and follow directions on terminal for opening locahost in browswer)
 
 4. Create a .env.local file in the project folder to connect to database:
 DB_HOST=(usually localhost)
