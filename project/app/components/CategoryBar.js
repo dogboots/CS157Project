@@ -20,7 +20,7 @@ export default function CategoryBar() {
               </Link>
             </li>
             <li>
-              <Link href="/categories/home-kitchen" className="text-lg hover:text-gray-400">
+              <Link href="/categories/homekitchen" className="text-lg hover:text-gray-400">
                 Home & Kitchen
               </Link>
             </li>
