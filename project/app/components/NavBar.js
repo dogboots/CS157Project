@@ -41,36 +41,44 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
               </button>
             </Link>
             <div className="flex space-x-6 ml-6">
-              {userRole === "admin" ? ( // Render Inventory button for admins only
-                <Link href="/inventory">
-                  <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-                    Inventory
-                  </button>
-                </Link>
-              ) : null}
-              {!buyerID ? (
-                <Link href="/login">
-                  <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-                    Login
-                  </button>
-                </Link>
-              ) : (
-                <>
-                  <Link href="/user">
-                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-                      User
-                    </button>
-                  </Link>
-                  <span className="text-white">User ID: {buyerID}</span>
-                  <button
-                    onClick={handleLogout}
-                    className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
-                  >
-                    Logout
-                  </button>
-                </>
-              )}
-            </div>
+  {userRole === "admin" ? (
+    <Link href="/inventory">
+      <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+        Inventory
+      </button>
+    </Link>
+  ) : null}
+  {!buyerID ? (
+    <>
+      <Link href="/login">
+        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+          Login
+        </button>
+      </Link>
+      <Link href="/signup">
+        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+          Sign Up
+        </button>
+      </Link>
+    </>
+  ) : (
+    <>
+      <Link href="/user">
+        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+          User
+        </button>
+      </Link>
+      <span className="text-white">User ID: {buyerID}</span>
+      <button
+        onClick={handleLogout}
+        className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
+      >
+        Logout
+      </button>
+    </>
+  )}
+</div>
+
           </div>
           <button>
             <FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
