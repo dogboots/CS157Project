@@ -146,8 +146,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (4, 1, 'Camera', 'Waterproof, 1080p recording', 199.99, 80, '/images/bluetoothspeaker.jpg', '2023-09-15'),
 (4, 1, 'Wireless Earbuds', 'Noise-cancelling, 10-hour life', 99.99, 200, '/images/wirelessearbuds.jpg', '2023-11-15'),
 (3, 1, 'Desk Fan', 'Adjustable speed, quiet', 29.99, 120, '/images/deskfan.jpg', '2023-06-10'),
-(3, 1, 'LED Lamp', 'Adjustable brightness', 19.99, 250, '/images/ledlamp.jpg', '2023-07-05'),
-(3, 1, 'TV', 'Classic TV for everyday use', 399.99, 120, '/images/tv.jpg', '2023-10-15'),
 (3, 1, 'Mouse', 'Wireless mouse with adjustable DPI', 29.99, 200, '/images/mouse.jpg', '2022-09-15')
 ;
 
@@ -159,8 +157,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (4, 2, 'The Lightning Thief', 'First Percy Jackson book', 20.99, 80, '/images/lightningthief.jpg', '2009-09-15'),
 (4, 2, 'The Sea of Monsters', 'Second Percy Jackson book', 20.99, 90, '/images/seaofmonsters.jpg', '2011-11-15'),
 (4, 2, 'Moby-Dick', 'A book about the whale', 29.99, 50, '/images/mobydick.jpg', '2018-06-10'),
-(4, 2, 'Wuthering Heights', 'Classic novel with romance and revenge', 19.99, 250, '/images/wutheringheights.jpg', '2022-07-05'),
-(4, 2, 'The Lord of the Rings', 'Classic fantasy novel', 19.99, 120, '/images/lotr.jpg', '2021-10-15'),
 (4, 2, 'Frankenstein', 'story about a science experiment gone wrong', 15.99, 200, '/images/frankenstein.jpg', '2022-09-15')
 ;
 
@@ -172,8 +168,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (5, 3, 'Glasses', 'Fashionable glasses', 149.99, 20, '/images/glasses.jpg', '2021-09-15'),
 (5, 3, 'Gloves', 'Fashionable gloves', 200.99, 25, '/images/gloves.jpg', '2020-11-15'),
 (5, 3, 'Shoes', 'Good Shoes, Last a lifetime', 19.99, 50, '/images/shoes.jpg', '2018-06-10'),
-(5, 3, 'Necklace', 'Very cute necklace', 25.99, 250, '/images/necklace.jpg', '2022-07-05'),
-(5, 3, 'Bracelet', 'Very cute braclet', 39.99, 120, '/images/bracelet.jpg', '2021-10-15'),
 (5, 3, 'Ring', 'Very pretty ring', 399.99, 25, '/images/ring.jpg', '2022-09-15')
 ;
 
@@ -186,8 +180,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (4, 4, 'Plate', 'Necessary for daily meals', 10.99, 25, '/images/plate.jpg', '2020-11-15'),
 (4, 4, 'Pan', 'Perfect to sear the perfect steak', 19.99, 50, '/images/pan.jpg', '2018-06-10'),
 (4, 4, 'Bottle', 'Useful for water or any drink', 15.99, 250, '/images/bottle.jpg', '2022-07-05'),
-(4, 4, 'Spatula', 'Perfect for morning pancakes', 15.99, 120, '/images/spatula.jpg', '2021-10-15'),
-(4, 4, 'Bowl', 'Perfect for some soup', 10.99, 25, '/images/bowl.jpg', '2022-09-15'),
 (4, 4, 'Toaster', 'Perfect for making some toast', 50.99, 25, '/images/toaster.jpg', '2022-09-15')
 ;
 
@@ -200,8 +192,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (4, 5, 'Beyblade', 'Popular toy for children', 39.99, 25, '/images/beyblade.jpg', '2020-11-15'),
 (4, 5, 'Doll', 'Cute toy for children', 15.99, 50, '/images/doll.jpg', '2018-06-10'),
 (4, 5, 'Toy Piano', 'Toy Piano to keep your child happy', 15.99, 250, '/images/toypiano.jpg', '2022-07-05'),
-(4, 5, 'Toy Phone', 'Perfect to keep children busy', 15.99, 120, '/images/toyphone.jpg', '2021-10-15'),
-(3, 5, 'Toy Train', 'Very fun toys for toddlers', 10.99, 25, '/images/toytrain.jpg', '2022-09-15'),
 (3, 5, 'Action figure', 'Cool toy for kids who love adventure', 50.99, 25, '/images/actionfigure.jpg', '2022-09-15')
 ;
 
@@ -214,8 +204,6 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 (4, 6, 'Tennis Racquet', 'Best selection of quality tennis racquets', 19.99, 25, '/images/tennisracquet.jpg', '2020-11-15'),
 (3, 6, 'Tennis Ball', 'High quality, long-lasting', 9.99, 50, '/images/tennisball.jpg', '2018-06-10'),
 (3, 6, 'Volleyball', 'Simple design, water resistant', 35.99, 250, '/images/volleyball.jpg', '2022-07-05'),
-(3, 6, 'Baseball', 'The ball used in the sport of baseball', 15.99, 120, '/images/baseball.jpg', '2021-10-15'),
-(3, 6, 'Baseball gloves', 'Comfortable, easy to use', 10.99, 25, '/images/baseballgloves.jpg', '2022-09-15'),
 (3, 6, 'Football', 'Designed to meet the needs of players at every level', 36.99, 25, '/images/football.jpg', '2022-09-15')
 ;
 
