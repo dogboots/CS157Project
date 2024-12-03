@@ -8,19 +8,26 @@ import "../globals.css";
 
 function NavBar({ isOpen, closeSideBar, openSideBar }) {
   const [buyerID, setBuyerID] = useState(null);
+  const [userRole, setUserRole] = useState(null); // Track user role
 
   useEffect(() => {
     const storedBuyerID = sessionStorage.getItem("buyerID");
-    console.log("Loaded buyerID from sessionStorage:", storedBuyerID); // Debugging line
+    const storedRole = sessionStorage.getItem("userRole"); // Fetch user role
+    console.log("Stored BuyerID:", storedBuyerID); // Debugging Buyer ID
+    console.log("Stored Role:", storedRole); // Debugging Role
     if (storedBuyerID) {
       setBuyerID(storedBuyerID);
+    }
+    if (storedRole) {
+      setUserRole(storedRole);
     }
   }, []);
 
   const handleLogout = () => {
     sessionStorage.removeItem("buyerID");
+    sessionStorage.removeItem("userRole");
     setBuyerID(null);
-    console.log(buyerID)
+    setUserRole(null);
   };
 
   return (
@@ -34,6 +41,13 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
               </button>
             </Link>
             <div className="flex space-x-6 ml-6">
+              {userRole === "admin" ? ( // Render Inventory button for admins only
+                <Link href="/inventory">
+                  <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                    Inventory
+                  </button>
+                </Link>
+              ) : null}
               {!buyerID ? (
                 <Link href="/login">
                   <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
@@ -42,6 +56,11 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
                 </Link>
               ) : (
                 <>
+                  <Link href="/user">
+                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                      User
+                    </button>
+                  </Link>
                   <span className="text-white">User ID: {buyerID}</span>
                   <button
                     onClick={handleLogout}

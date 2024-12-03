@@ -23,10 +23,11 @@ export default function Login() {
         return;
       }
 
-      const { userID } = await res.json();
+      const { userID, role } = await res.json(); // Destructure role from response
 
-      // Store UserID in sessionStorage and redirect to home
+      // Store UserID and role in sessionStorage, then redirect to home
       sessionStorage.setItem("buyerID", String(userID));
+      sessionStorage.setItem("userRole", role); // Store role for role-based access
       router.push("/");
     } catch (err) {
       setError("An unexpected error occurred.");
@@ -69,7 +70,6 @@ export default function Login() {
             Login
           </button>
         </form>
-      
       </div>
     </div>
   );

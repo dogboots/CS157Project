@@ -22,7 +22,7 @@ export default function handler(req, res) {
 
       // Check if the password matches
       if (user.Password === password) {
-        return res.status(200).json({ message: 'Login successful', userID: user.UserID });
+        return res.status(200).json({ message: 'Login successful', userID: user.UserID, role: user.Role });
       } else {
         return res.status(401).json({ error: 'Invalid username or password' });
       }
