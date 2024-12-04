@@ -22,12 +22,37 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
     }
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const userId = sessionStorage.getItem("buyerID");
+  
+    if (userId) {
+      // Call the backend to delete all items from the user's cart
+      const response = await fetch('/api/cart', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId }),
+      });
+  
+      if (response.ok) {
+        console.log("Cart cleared successfully.");
+      } else {
+        console.error("Failed to clear the cart.");
+      }
+  
+
+    }
+  
+    // Remove sessionStorage items
     sessionStorage.removeItem("buyerID");
     sessionStorage.removeItem("userRole");
+  
+    // Clear state variables
     setBuyerID(null);
     setUserRole(null);
   };
+  
 
   return (
     <div>

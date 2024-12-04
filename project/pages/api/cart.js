@@ -40,6 +40,27 @@ export default function handler(req, res) {
         }
       );
     }
+  } else if (req.method === 'DELETE') {
+    const { userId } = req.body;
+
+    // Ensure userId is provided
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    // Delete all items from the user's cart
+    db.query(
+      `DELETE FROM ShoppingCart WHERE UserID = ?`,
+      [userId],
+      (err, results) => {
+        if (err) {
+          console.error('Error clearing cart:', err);
+          return res.status(500).json({ error: 'Failed to clear cart' });
+        }
+
+        res.status(200).json({ message: 'Cart cleared successfully' });
+      }
+    );
   } else {
     res.status(405).json({ error: 'Method not allowed' });
   }
