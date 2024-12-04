@@ -16,5 +16,15 @@ DB_PASSWORD=(db password)
 DB_NAME=(name of db)
 
 
+Division of work:
 
+Leo- Designed the database and made the ER model work well. Created the database file, checked the work for accuracy, and helped with the report and slides by adding technical details.
+
+Mehek- Created the ER data model and checked the database design for any issues. Also started the report and contributed to the slides.
+
+Miggy- Divided work and made sure progression was on pace. Reviewed the database design, set up the back-end and API infrastructure, and contributed as a full-stack developer. Also collaborated on the report and presentation slides.
+
+Richard- Contributed to the development of the ER data model and provided a careful review of the database design. Was actively involved in the report and started the presentation slides.
+
+Vincent- Initiated the repository and established the foundation for the front-end. Worked as a full-stack contributor for components of both the client and server sides. Additionally, contributed significantly to the project documentation, assisting with the report and the presentation slides.
 
