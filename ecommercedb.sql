@@ -25,7 +25,7 @@ CREATE TABLE User (
 -- Category Table (Entity 3)
 CREATE TABLE Category (
 	CategoryID INTEGER AUTO_INCREMENT PRIMARY KEY,
-    CategoryName VARCHAR(225) NOT NULL
+    CategoryName VARCHAR(225) NOT NULL UNIQUE
 );
 
 -- Product Table (Entity 4)
@@ -126,7 +126,7 @@ INSERT INTO User (Username, Password, Email, Role, AddressID) VALUES
 INSERT INTO Category (CategoryName) VALUES
 ('Electronics'),
 ('Books'),
-('Fashion'), 
+('Fashion'),
 ('HomeKitchen'),
 ('Toys'),
 ('Sports')
