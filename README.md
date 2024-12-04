@@ -4,7 +4,7 @@ https://www.npmjs.com/
 
 2. Download the files from GitHub
 
-3. Navigate to the directory where project is stored in cmd prompt and do the following commands:
+3. Navigate to the directory where CS157Project/project is stored in cmd prompt and do the following commands:
 
 npm install (installs dependencies)
 npm run dev (runs development server and follow directions on terminal for opening locahost in browswer)
