@@ -25,7 +25,7 @@ CREATE TABLE User (
 -- Category Table (Entity 3)
 CREATE TABLE Category (
 	CategoryID INTEGER AUTO_INCREMENT PRIMARY KEY,
-    CategoryName VARCHAR(225) NOT NULL
+    CategoryName VARCHAR(225) NOT NULL UNIQUE
 );
 
 -- Product Table (Entity 4)
