@@ -127,7 +127,7 @@ INSERT INTO Category (CategoryName) VALUES
 ('Electronics'),
 ('Books'),
 ('Fashion'),
-('Home & Kitchen'),
+('HomeKitchen'),
 ('Toys'),
 ('Sports')
 ;
@@ -211,11 +211,6 @@ INSERT INTO Inventory (SellerID, ProductID, Quantity) VALUES
 (3, 1, 50),
 (3, 2, 100),
 (3, 3, 200)
-;
-
-INSERT INTO ShoppingCart (UserID, ProductID, Quantity) VALUES
-(1, 1, 1),
-(1, 2, 2)
 ;
 
 INSERT INTO `Order` (BuyerID, TotalPrice, PurchaseDate) VALUES
