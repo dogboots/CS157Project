@@ -11,6 +11,7 @@ export default function CategoryPage() {
   const [loading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
+  const [buyerID, setBuyerID] = useState(null); // Track buyer ID from sessionStorage
 
   const openSideBar = () => {
     setOpen(!isOpen);
@@ -20,7 +21,13 @@ export default function CategoryPage() {
     setOpen(false);
   };
 
+  // Fetch buyerID from sessionStorage on mount
   useEffect(() => {
+    const storedBuyerID = sessionStorage.getItem('buyerID');
+    if (storedBuyerID) {
+      setBuyerID(storedBuyerID); // Set buyerID from sessionStorage
+    }
+
     if (category) {
       async function fetchCategoryData() {
         const res = await fetch(`/api/categories/${category}`);
@@ -33,7 +40,12 @@ export default function CategoryPage() {
     }
   }, [category]);
 
-  const handleIncrease = (productId, stockQuantity) => {
+  const handleIncrease = async (productId, stockQuantity) => {
+    if (!buyerID) {
+      alert("Please log in to add products to the cart.");
+      return;
+    }
+
     const productIndex = selectedItems.findIndex(item => item.ProductID === productId);
 
     if (productIndex !== -1) {
@@ -41,26 +53,78 @@ export default function CategoryPage() {
       if (updatedItems[productIndex].selectedQuantity < stockQuantity) {
         updatedItems[productIndex].selectedQuantity += 1;
         setSelectedItems(updatedItems);
+
+        // Update the cart in the backend
+        await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: buyerID, // Pass buyerID from sessionStorage
+            productId,
+            quantity: updatedItems[productIndex].selectedQuantity,
+          }),
+        });
       }
     } else {
       const product = products.find(product => product.ProductID === productId);
       if (product) {
         setSelectedItems([...selectedItems, { ...product, selectedQuantity: 1 }]);
+
+        // Add the product to cart in backend
+        await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: buyerID, // Pass buyerID from sessionStorage
+            productId,
+            quantity: 1,
+          }),
+        });
       }
     }
   };
 
-  const handleDecrease = (productId) => {
+  const handleDecrease = async (productId) => {
+    if (!buyerID) {
+      alert("Please log in to update your cart.");
+      return;
+    }
+
     const productIndex = selectedItems.findIndex(item => item.ProductID === productId);
 
     if (productIndex !== -1) {
       const updatedItems = [...selectedItems];
-      if (updatedItems[productIndex].selectedQuantity > 1) {
+      const currentQuantity = updatedItems[productIndex].selectedQuantity;
+
+      if (currentQuantity > 1) {
         updatedItems[productIndex].selectedQuantity -= 1;
         setSelectedItems(updatedItems);
+
+        // Update the cart in backend
+        await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: buyerID, // Pass buyerID from sessionStorage
+            productId,
+            quantity: updatedItems[productIndex].selectedQuantity,
+          }),
+        });
       } else {
+        // Remove the item from the cart if quantity is 0
         updatedItems.splice(productIndex, 1);
         setSelectedItems(updatedItems);
+
+        // Delete the item from the cart in backend
+        await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: buyerID, // Pass buyerID from sessionStorage
+            productId,
+            quantity: 0, // Quantity 0 triggers deletion
+          }),
+        });
       }
     }
   };

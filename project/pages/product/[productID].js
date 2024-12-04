@@ -11,21 +11,21 @@ export default function ProductReviews() {
   const [loading, setLoading] = useState(true);
   const [buyerID, setBuyerID] = useState(null);
 
+  // Function to fetch reviews
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch(`/api/reviews/${productID}`);
+      const data = await response.json();
+      setReviews(data);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (!productID) return;
-
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch(`/api/reviews/${productID}`);
-        const data = await response.json();
-        setReviews(data);
-      } catch (error) {
-        console.error('Error fetching reviews:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchReviews();
   }, [productID]);
 
@@ -34,8 +34,6 @@ export default function ProductReviews() {
     if (storedBuyerID) {
       setBuyerID(storedBuyerID);
     }
-
-  
   }, []);
 
   const handleReviewChange = (e) => {
@@ -61,7 +59,8 @@ export default function ProductReviews() {
       if (response.ok) {
         alert('Review submitted successfully!');
         setNewReview({ stars: '', reviewContent: '' });
-        await fetchReviews();
+        await fetchReviews(); // Re-fetch reviews after submitting
+        router.push(`/product/${productID}`); // Redirect to the product page
       } else {
         alert('Failed to submit review');
       }

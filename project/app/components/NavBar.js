@@ -13,8 +13,7 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
   useEffect(() => {
     const storedBuyerID = sessionStorage.getItem("buyerID");
     const storedRole = sessionStorage.getItem("userRole"); // Fetch user role
-    console.log("Stored BuyerID:", storedBuyerID); // Debugging Buyer ID
-    console.log("Stored Role:", storedRole); // Debugging Role
+   
     if (storedBuyerID) {
       setBuyerID(storedBuyerID);
     }

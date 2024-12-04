@@ -67,7 +67,7 @@ export default function CheckoutPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ items: orderData.items }),
-        });
+        });   
 
         if (!stockUpdateResponse.ok) {
           alert('Failed to update stock. Please try again.');
