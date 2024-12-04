@@ -15,6 +15,8 @@ DB_USER=(usually root)
 DB_PASSWORD=(db password)
 DB_NAME=(name of db)
 
+5. Then run your MySQL server and paste in the ecommercedb.sql file script.
+
 
 Division of work:
 
