@@ -13,7 +13,7 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
   useEffect(() => {
     const storedBuyerID = sessionStorage.getItem("buyerID");
     const storedRole = sessionStorage.getItem("userRole"); // Fetch user role
-   
+
     if (storedBuyerID) {
       setBuyerID(storedBuyerID);
     }
@@ -24,7 +24,7 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
 
   const handleLogout = async () => {
     const userId = sessionStorage.getItem("buyerID");
-  
+
     if (userId) {
       // Call the backend to delete all items from the user's cart
       const response = await fetch('/api/cart', {
@@ -34,25 +34,25 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
         },
         body: JSON.stringify({ userId }),
       });
-  
+
       if (response.ok) {
         console.log("Cart cleared successfully.");
       } else {
         console.error("Failed to clear the cart.");
       }
-  
-
     }
-  
+
     // Remove sessionStorage items
     sessionStorage.removeItem("buyerID");
     sessionStorage.removeItem("userRole");
-  
+
     // Clear state variables
     setBuyerID(null);
     setUserRole(null);
+
+    // Refresh the page
+    window.location.reload();
   };
-  
 
   return (
     <div>
@@ -65,44 +65,43 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
               </button>
             </Link>
             <div className="flex space-x-6 ml-6">
-  {userRole === "admin" ? (
-    <Link href="/inventory">
-      <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-        Inventory
-      </button>
-    </Link>
-  ) : null}
-  {!buyerID ? (
-    <>
-      <Link href="/login">
-        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-          Login
-        </button>
-      </Link>
-      <Link href="/signup">
-        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-          Sign Up
-        </button>
-      </Link>
-    </>
-  ) : (
-    <>
-      <Link href="/user">
-        <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
-          User
-        </button>
-      </Link>
-      <span className="text-white">User ID: {buyerID}</span>
-      <button
-        onClick={handleLogout}
-        className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
-      >
-        Logout
-      </button>
-    </>
-  )}
-</div>
-
+              {userRole === "admin" ? (
+                <Link href="/inventory">
+                  <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                    Inventory
+                  </button>
+                </Link>
+              ) : null}
+              {!buyerID ? (
+                <>
+                  <Link href="/login">
+                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                      Login
+                    </button>
+                  </Link>
+                  <Link href="/signup">
+                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                      Sign Up
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/user">
+                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                      User
+                    </button>
+                  </Link>
+                  <span className="text-white">User ID: {buyerID}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
+            </div>
           </div>
           <button>
             <FiMenu className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
