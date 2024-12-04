@@ -127,7 +127,7 @@ INSERT INTO Category (CategoryName) VALUES
 ('Electronics'),
 ('Books'),
 ('Fashion'),
-('Home & Kitchen'),
+('HomeKitchen'),
 ('Toys'),
 ('Sports')
 ;
