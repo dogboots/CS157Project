@@ -213,11 +213,6 @@ INSERT INTO Inventory (SellerID, ProductID, Quantity) VALUES
 (3, 3, 200)
 ;
 
-INSERT INTO ShoppingCart (UserID, ProductID, Quantity) VALUES
-(1, 1, 1),
-(1, 2, 2)
-;
-
 INSERT INTO `Order` (BuyerID, TotalPrice, PurchaseDate) VALUES
 (1, 739.97, '2023-03-10'),
 (1, 49.97, '2023-03-15')
