@@ -126,8 +126,8 @@ INSERT INTO User (Username, Password, Email, Role, AddressID) VALUES
 INSERT INTO Category (CategoryName) VALUES
 ('Electronics'),
 ('Books'),
-('Fashion'),
-('Home & Kitchen'),
+('Fashion'), 
+('HomeKitchen'),
 ('Toys'),
 ('Sports')
 ;
