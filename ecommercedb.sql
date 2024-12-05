@@ -210,20 +210,56 @@ INSERT INTO Product (SellerID, CategoryID, ProductName, ProductDescription, Prod
 INSERT INTO Inventory (SellerID, ProductID, Quantity) VALUES
 (3, 1, 50),
 (3, 2, 100),
-(3, 3, 200)
-;
+(3, 3, 200),
+(4, 4, 100),
+(4, 5, 150),
+(4, 6, 300),
+(4, 7, 80),
+(4, 8, 200),
+(3, 9, 120),
+(3, 10, 200),
+(3, 11, 150),
+(4, 12, 50),
+(4, 13, 300),
+(4, 14, 80),
+(4, 15, 90),
+(4, 16, 50),
+(4, 17, 200),
+(4, 18, 300),
+(5, 19, 150),
+(5, 20, 50),
+(5, 21, 300),
+(5, 22, 20),
+(5, 23, 25),
+(5, 24, 50),
+(5, 25, 25),
+(4, 26, 150),
+(4, 27, 50),
+(4, 28, 300),
+(4, 29, 20),
+(4, 30, 25),
+(4, 31, 50),
+(4, 32, 250),
+(4, 33, 25),
+(4, 34, 150),
+(4, 35, 50),
+(4, 36, 300),
+(4, 37, 20),
+(4, 38, 25),
+(3, 39, 50),
+(3, 40, 250),
+(3, 41, 25),
+(4, 42, 50),
+(4, 43, 300),
+(4, 44, 20),
+(4, 45, 25),
+(3, 46, 150),
+(3, 47, 50),
+(3, 48, 300);
 
-INSERT INTO `Order` (BuyerID, TotalPrice, PurchaseDate) VALUES
-(1, 739.97, '2023-03-10'),
-(1, 49.97, '2023-03-15')
-;
+
 
 INSERT INTO Payment (OrderID, PaymentMethod, PaymentStatus, PaymentDate) VALUES
 (1, 'CreditCard', 'Completed', '2023-03-10'),
 (2, 'PayPal', 'Completed', '2023-03-15')
-;
-
-INSERT INTO Review (ProductID, UserID, Stars, ReviewContent, PublishDate) VALUES
-(1, 1, 5, 'Good', '2023-03-11'),
-(2, 1, 4, 'Nice', '2023-03-16')
 ;
