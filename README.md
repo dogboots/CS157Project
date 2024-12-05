@@ -1,6 +1,15 @@
 1. Install npm:
 
-https://www.npmjs.com/
+https://nodejs.org/
+
+Download and install Node.js using the Windows Installer (.msi file):
+
+LTS (Long Term Support) version is recommended for most users.
+Node.js installation includes npm.
+
+Verify the installation by checking the versions of Node.js and npm:
+node -v
+npm -v
 
 2. Download the files from GitHub
 
