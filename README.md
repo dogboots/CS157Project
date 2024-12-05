@@ -22,7 +22,7 @@ npm run dev (runs development server and follow directions on terminal for openi
 DB_HOST=(usually localhost)
 DB_USER=(usually root)
 DB_PASSWORD=(db password)
-DB_NAME=(name of db)
+DB_NAME=ecommercedb
 
 5. Then run your MySQL server and paste in the ecommercedb.sql file script.
 
