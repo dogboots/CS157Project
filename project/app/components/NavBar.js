@@ -92,6 +92,11 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
                       User
                     </button>
                   </Link>
+                  <Link href="/orders">
+                    <button className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition">
+                      Orders
+                    </button>
+                  </Link>
                   <span className="text-white">User ID: {buyerID}</span>
                   <button
                     onClick={handleLogout}
