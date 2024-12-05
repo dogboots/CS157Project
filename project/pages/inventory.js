@@ -23,25 +23,34 @@ export default function Inventory() {
   }, []);
 
   const handleStockChange = (productId) => {
-    // Call API to update stock quantity
+    // Update stock in the products table
     fetch(`/api/products/${productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ stockQuantity: newStock }),
     })
-      .then((response) => response.json())
       .then(() => {
-        setProducts((prev) =>
-          prev.map((product) =>
-            product.ProductID === productId
-              ? { ...product, StockQuantity: newStock }
-              : product
-          )
-        );
-        setEditingProduct(null);
+        // Update stock in the inventory table
+        fetch("/api/inventory", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ProductID: productId, newStock }),
+        })
+          .then((response) => response.json())
+          .then(() => {
+            setProducts((prev) =>
+              prev.map((product) =>
+                product.ProductID === productId
+                  ? { ...product, StockQuantity: newStock }
+                  : product
+              )
+            );
+            setEditingProduct(null);
+          })
+          .catch((error) => console.error("Failed to update inventory:", error));
       })
       .catch((error) => console.error("Failed to update stock:", error));
-  };
+  };  
 
   return (
     <div>
@@ -83,7 +92,10 @@ export default function Inventory() {
                   ) : (
                     <button
                       className="bg-blue-500 text-white px-4 py-2 rounded"
-                      onClick={() => setEditingProduct(product.ProductID)}
+                      onClick={() => {
+                        setEditingProduct(product.ProductID);
+                        setNewStock(product.StockQuantity); // Make sure to set initial value for newStock
+                      }}
                     >
                       Edit
                     </button>

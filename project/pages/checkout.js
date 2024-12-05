@@ -79,8 +79,17 @@ export default function CheckoutPage() {
           body: JSON.stringify({ items: orderData.items }),
         });
 
-        if (!stockUpdateResponse.ok) {
-          alert('Failed to update stock. Please try again.');
+        const inventoryUpdateResponse = await fetch('/api/update-inventory', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: orderData.items }),
+        });
+
+        console.log('Stock update response:', stockUpdateResponse);
+        console.log('Inventory update response:', inventoryUpdateResponse);
+
+        if (!stockUpdateResponse.ok || !inventoryUpdateResponse.ok) {
+          alert('Failed to update stock and inventory. Please try again.');
           setLoading(false);
           return;
         }
