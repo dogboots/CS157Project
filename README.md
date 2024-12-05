@@ -1,4 +1,4 @@
-1. Install npm:
+1. Have MySQL installed then Install npm:
 
 https://nodejs.org/
 
