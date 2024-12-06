@@ -257,9 +257,21 @@ INSERT INTO Inventory (SellerID, ProductID, Quantity) VALUES
 (3, 47, 50),
 (3, 48, 300);
 
-
+INSERT INTO `Order` (BuyerID, TotalPrice, PurchaseDate) VALUES
+(1, 739.97, '2023-03-10'),
+(1, 49.97, '2023-03-15')
+;
 
 INSERT INTO Payment (OrderID, PaymentMethod, PaymentStatus, PaymentDate) VALUES
 (1, 'CreditCard', 'Completed', '2023-03-10'),
 (2, 'PayPal', 'Completed', '2023-03-15')
 ;
+
+INSERT INTO Review (ProductID, UserID, Stars, ReviewContent, PublishDate) VALUES
+(1, 1, 5, 'Good', '2023-03-11'),
+(2, 1, 4, 'Nice', '2023-03-16')
+;
+
+-- Indexes
+CREATE INDEX idx_category_name ON Category (CategoryName);
+CREATE INDEX idx_order_purchase_date ON `Order`(PurchaseDate);
