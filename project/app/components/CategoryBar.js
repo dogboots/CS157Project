@@ -8,7 +8,7 @@ export default function CategoryBar() {
       <div className="flex">
         <div className="w-64 bg-[#457B9D] text-white h-screen p-5">
           <h3 className="text-xl font-bold mb-5">Categories</h3>
-          <hr class="h-px my-4 bg-red-50 border-0 dark:bg-grey-100"/>
+          <hr className="h-px my-4 bg-red-50 border-0 dark:bg-grey-100"/>
           <ul className="space-y-4">
             <li>
               <Link href="/categories/electronics" className="text-lg hover:text-gray-400">
