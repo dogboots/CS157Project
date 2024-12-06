@@ -31,7 +31,7 @@ Division of work:
 
 Leo- Designed the database and made the ER model work well. Created the database file, checked the work for accuracy, and helped with the report and slides by adding technical details.
 
-Mehek- Created the ER data model and checked the database design for any issues. Also started the report and contributed to the slides.
+Mehek- Created the ER data model and checked the database design for any issues. Tested and reviewed website functionality pointing out bugs and resolving them. Also started the report and contributed to the slides.
 
 Miggy- Divided work and made sure progression was on pace. Reviewed the database design, set up the back-end and API infrastructure, and contributed as a full-stack developer. Also collaborated on the report and presentation slides.
 
