@@ -51,11 +51,11 @@ function OrdersPage() {
     return (
         <div>
             <Navbar />
-            <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
-                <h1 className="text-3xl font-semibold text-center text-green-600 mb-6">Your Orders</h1>
+            <div className="max-w-3xl mx-auto p-6 bg-white border-[#E63946] border-2 rounded-lg mt-8">
+                <h1 className="text-3xl font-semibold text-center text-[#E63946] mb-6">Your Orders</h1>
                 {orders.length > 0 ? (
                     orders.map((order) => (
-                        <div key={order.OrderID} className="border-b border-gray-300 py-4">
+                        <div key={order.OrderID} className="py-4 ">
                             <p><strong>Order ID:</strong> {order.OrderID}</p>
                             <p><strong>Total Price:</strong> ${parseFloat(order.TotalPrice).toFixed(2)}</p>
                             <p><strong>Purchase Date:</strong> {new Date(order.PurchaseDate).toLocaleDateString()}</p>
