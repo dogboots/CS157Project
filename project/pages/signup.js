@@ -37,81 +37,107 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200">
-    <div className="bg-white shadow-lg rounded-lg p-8 w-96">
-      <h1 className="text-3xl font-semibold text-center text-green-600 mb-6">
-        Sign Up
-      </h1>
-      {error && (
-        <p className="text-red-500 text-center bg-red-100 py-2 px-4 rounded mb-4">
-          {error}
-        </p>
-      )}
-      <form onSubmit={handleSignup} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Street Name"
-          value={streetName}
-          onChange={(e) => setStreetName(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="text"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="text"
-          placeholder="State"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Zip Code"
-          value={zipCode}
-          onChange={(e) => setZipCode(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition duration-200"
-        >
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+      <div className="bg-white shadow-2xl rounded-xl p-10 w-full max-w-md">
+        <h1 className="text-4xl font-bold text-center text-green-600 mb-8 tracking-tight">
           Sign Up
-        </button>
-      </form>
+        </h1>
+        
+        {error && (
+          <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-r-lg" role="alert">
+            <p className="font-medium">{error}</p>
+          </div>
+        )}
+        
+        <form onSubmit={handleSignup} className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="col-span-2">
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="col-span-2">
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="col-span-2">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                placeholder="Street Name"
+                value={streetName}
+                onChange={(e) => setStreetName(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="State"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="col-span-2">
+              <input
+                type="text"
+                placeholder="Zip Code"
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+          </div>
+          
+          <button
+            type="submit"
+            className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold 
+            hover:bg-green-600 transition duration-300 ease-in-out 
+            transform hover:-translate-y-1 hover:scale-102 
+            focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+          >
+            Sign Up
+          </button>
+        </form>
+        
+        <p className="text-center text-gray-500 text-sm mt-6">
+          Already have an account? <a href="/login" className="text-green-600 hover:underline">Log in</a>
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
 }
