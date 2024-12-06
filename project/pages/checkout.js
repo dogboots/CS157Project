@@ -118,7 +118,7 @@ export default function CheckoutPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Checkout</h1>
       {selectedItems.length === 0 ? (
-        <p>No items in your cart.</p>
+        <p>No items in your cart</p>
       ) : (
         selectedItems.map((item) => (
           <div key={item.ProductID} className="border p-4 mb-4 rounded shadow">
@@ -147,12 +147,12 @@ export default function CheckoutPage() {
       <button
         onClick={handlePlaceOrder}
         disabled={loading}
-        className="mt-4 px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        className="mt-4 px-6 py-2 bg-green-400 text-white rounded hover:bg-green-500"
       >
         {loading ? 'Placing Order...' : 'Place Order'}
       </button>
 
-      {orderPlaced && <p className="mt-4 text-green-500">Order placed successfully!</p>}
+      {orderPlaced && <p className="mt-4 text-green-600">Order placed successfully!</p>}
     </div>
     </>
   );
