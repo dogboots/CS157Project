@@ -152,13 +152,13 @@ export default function CategoryPage() {
       {/* Main content container */}
       <div className="flex flex-1">
         {/* Category Bar to the left */}
-        <div className="w-1/4 bg-gray-200 p-4">
+        <div className="w-1/8 p-4 bg-[#457B9D]">
           <CategoryBar />
         </div>
 
         {/* Product grid in the center */}
-        <div className="flex-1 p-4">
-          <h1 className="text-center text-3xl font-bold mb-6">{category}</h1>
+        <div className="flex-1 p-4 ">
+          <h1 className="text-center text-3xl font-bold mb-6 uppercase  p-2 text-white bg-[#1D3557]">{category}</h1>
 
           {/* Product Grid Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -177,7 +177,7 @@ export default function CategoryPage() {
                   {/* Quantity controls */}
                   <div className="flex items-center mt-4">
                     <button
-                      className="bg-gray-300 text-gray-700 rounded-full px-4 py-2"
+                      className="bg-gray-300 text-gray-700 rounded-full px-4 py-2 hover:bg-gray-400"
                       onClick={() => handleDecrease(product.ProductID)}
                     >
                       -
@@ -186,7 +186,7 @@ export default function CategoryPage() {
                       {selectedItems.find(item => item.ProductID === product.ProductID)?.selectedQuantity || 0}
                     </span>
                     <button
-                      className="bg-gray-300 text-gray-700 rounded-full px-4 py-2"
+                      className="bg-gray-300 text-gray-700 rounded-full px-4 py-2 hover:bg-gray-400"
                       onClick={() => handleIncrease(product.ProductID, product.StockQuantity)}
                       disabled={selectedItems.find(item => item.ProductID === product.ProductID)?.selectedQuantity >= product.StockQuantity}
                     >
@@ -199,7 +199,7 @@ export default function CategoryPage() {
                     onClick={() => handleReviewClick(product.ProductID)}
                     className="absolute bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
                   >
-                    Write a Review
+                    Write Review
                   </button>
                 </div>
               </div>

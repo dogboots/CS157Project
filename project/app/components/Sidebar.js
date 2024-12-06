@@ -14,7 +14,7 @@ export default function Sidebar({ isOpen, closeSideBar, selectedItems = [], calc
 
   return (
     <aside className={`h-screen w-64 fixed top-0 right-0 transition-all duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-      <nav className="bg-[#1D3557] h-full flex flex-col border-l shadow-sm">
+      <nav className="bg-[#457B9D] h-full flex flex-col border-l shadow-sm">
         {/* Close Button */}
         <div className="p-1 flex justify-end">
           <button onClick={closeSideBar} className="text-white">

@@ -1,7 +1,10 @@
 "use-client";
 
+import NavBar from '@/app/components/NavBar';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import React from 'react'
+import ReactStars from 'react-stars'
 
 export default function ProductReviews() {
   const router = useRouter();
@@ -74,6 +77,8 @@ export default function ProductReviews() {
   }
 
   return (
+    <>
+    <NavBar/>
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Reviews for Product {productID}</h1>
 
@@ -83,7 +88,7 @@ export default function ProductReviews() {
             {reviews.map((review) => (
               <li key={review.ReviewID} className="bg-gray-50 p-4 rounded-lg shadow-sm">
                 <div className="space-y-2">
-                  <p className="font-semibold text-yellow-500">Stars: {review.Stars}</p>
+                  <ReactStars value={review.Stars} count={5} size={24} color2={'#ffd700'} edit={false}/>
                   <p className="italic text-gray-700">{review.ReviewContent}</p>
                   <p className="text-sm text-gray-500">Published on: {review.PublishDate}</p>
                 </div>
@@ -124,7 +129,7 @@ export default function ProductReviews() {
                 className="mt-2 p-2 border border-gray-300 rounded-md h-40"
               />
             </div>
-            <button type="submit" className="mt-4 w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition">
+            <button type="submit" className="mt-4 w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition">
               Submit Review
             </button>
           </form>
@@ -133,5 +138,6 @@ export default function ProductReviews() {
         <p className="mt-6 text-center text-gray-500">Please log in to submit a review.</p>
       )}
     </div>
+    </>
   );
 }

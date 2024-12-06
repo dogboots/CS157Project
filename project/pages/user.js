@@ -84,26 +84,27 @@ function UserPage() {
   return (
     <div>
       <Navbar />
-      <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
-        <h1 className="text-3xl font-semibold text-center text-green-600 mb-6">User Information</h1>
+      <div className="max-w-3xl mx-auto p-6 rounded-lg mt-8 border-[#E63946] border-2">
+        <h1 className="text-3xl font-semibold text-center text-[#E63946] mb-6">User Information</h1>
         {userData && (
           <div className="space-y-4">
-            <p className="font-medium text-gray-700"><strong>Username:</strong> {userData.Username}</p>
-            <p className="font-medium text-gray-700"><strong>Email:</strong> {userData.Email}</p>
-            <p className="font-medium text-gray-700"><strong>Role:</strong> {userData.Role}</p>
+            <h2 className="text-xl font-bold text-[rgb(29,53,87)]">Account</h2>
+            <p className="font-small text-gray-500"><strong>Username:</strong> {userData.Username}</p>
+            <p className="font-small text-gray-500"><strong>Email:</strong> {userData.Email}</p>
+            <p className="font-small text-gray-500"><strong>Role:</strong> {userData.Role}</p>
           </div>
         )}
 
         <div className="space-y-4 mt-6">
-          <h2 className="text-xl font-semibold text-gray-700">Address</h2>
+          <h2 className="text-xl font-bold text-[#1D3557]">Address</h2>
           {!isEditing ? (
             <div className="space-y-2">
-              <p><strong>Street:</strong> {address.street}</p>
-              <p><strong>City:</strong> {address.city}</p>
-              <p><strong>State:</strong> {address.state}</p>
-              <p><strong>Zip Code:</strong> {address.zipCode}</p>
+              <p className="font-small text-gray-500"><strong>Street:</strong> {address.street}</p>
+              <p className="font-small text-gray-500"><strong>City:</strong> {address.city}</p>
+              <p className="font-small text-gray-500"><strong>State:</strong> {address.state}</p>
+              <p className="font-small text-gray-500"><strong>Zip Code:</strong> {address.zipCode}</p>
               <button
-                className="w-full bg-yellow-500 text-white p-2 rounded mt-4"
+                className="transition w-full bg-[#3a86ff] hover:bg-[#3477e1] text-white p-2 rounded mt-4"
                 onClick={() => setIsEditing(true)}
               >
                 Edit Address
@@ -139,14 +140,14 @@ function UserPage() {
                 placeholder="Zip Code"
                 className="w-full p-2 border rounded"
               />
-              <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">
+              <button type="submit" className="transition w-full bg-[#3a86ff] hover:bg-[#3477e1]  text-white p-2 rounded">
                 Update Address
               </button>
             </form>
           )}
         </div>
 
-        {updateMessage && <p className="text-center mt-4">{updateMessage}</p>}
+        {updateMessage && <p className="text-center mt-4 text-red-400">{updateMessage}</p>}
       </div>
     </div>
   );

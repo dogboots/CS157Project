@@ -10,7 +10,6 @@ import "../globals.css";
 function NavBar({ isOpen, closeSideBar, openSideBar }) {
   const [buyerID, setBuyerID] = useState(null);
   const [userRole, setUserRole] = useState(null); // Track user role
-
   useEffect(() => {
     const storedBuyerID = sessionStorage.getItem("buyerID");
     const storedRole = sessionStorage.getItem("userRole"); // Fetch user role
@@ -56,7 +55,7 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
   };
 
   return (
-    <div>
+    <div className="sticky top-0">
       <nav className="bg-[#E63946] p-1">
         <div className="flex justify-between items-center text-white text-2xl">
           <div className="flex items-center">
@@ -98,19 +97,21 @@ function NavBar({ isOpen, closeSideBar, openSideBar }) {
                       Orders
                     </button>
                   </Link>
-                  <span className="text-white">User ID: {buyerID}</span>
                   <button
                     onClick={handleLogout}
                     className="bg-transparent text-white px-4 py-2 hover:text-gray-500 transition"
                   >
                     Logout
                   </button>
+                  <button className="cursor-auto">
+                    User ID: {buyerID}
+                  </button>
                 </>
               )}
             </div>
           </div>
           <button>
-            <FiShoppingCart className="text-3xl mr-2 cursor-pointer" onClick={openSideBar} />
+            <FiShoppingCart className="text-3xl mr-2 cursor-pointer hover:fill-rose-400" onClick={openSideBar} />
           </button>
         </div>
       </nav>
